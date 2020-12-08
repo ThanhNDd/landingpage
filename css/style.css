@@ -1874,3 +1874,26 @@ h5,
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+.wrap-color-product {
+    display: inline-block;
+    width: 120px;
+    cursor: pointer;
+}
+
+.color-product {
+    background-position: center;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    background-size: contain;
+    border-radius: 50%;
+}
+
+.wrap-color-product:hover .color-product {
+    border: 2px solid white;
+}
+
+.wrap-color-product:hover span {
+    color: white;
+}
