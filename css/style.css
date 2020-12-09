@@ -1897,3 +1897,20 @@ h5,
 .wrap-color-product:hover span {
     color: white;
 }
+
+.wrap-color-product.active .color-product {
+    border: 2px solid white;
+}
+
+.wrap-color-product.active span {
+    color: white;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.btn.disabled,
+.btn:disabled {
+    cursor: not-allowed;
+}
