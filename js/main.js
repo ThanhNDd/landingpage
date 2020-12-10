@@ -251,76 +251,81 @@
      }
      counter();
 
-
-     var choose_size = function() {
-         $("#size_choose").html("");
+     var size_choose = function() {
+         $("#size_choose tbody").html("");
          var tbody = "";
          var cm = 13.5;
          for (var i = 19; i < 37; i++) {
-             tbody += '<button class="btn btn-secondary text-white d-inline-block m-2" disabled data-toggle="popover" data-trigger="hover" title="Chiều dài chân phù hợp" data-content="' + cm + ' (cm) - ' + (cm + 0.5) + ' (cm)">Size ' + i + '</button>';
-             //  tbody += '<tr>' +
-             //      '<td width="100px">Size ' + i + '<span class="ml-2 icon icon-info-circle" style="cursor:pointer" data-toggle="popover" data-trigger="hover" title="Chiều dài chân phù hợp" data-content="' + cm + ' (cm) - ' + (cm + 0.5) + ' (cm)"></span></td>' +
-             //      '<td align="center">' +
-             //      '<div class="input-group mb-3 input-group-sm">' +
-             //      '<div class="input-group-prepend">' +
-             //      '<span class="d-inline-block pl-2 pr-2 pt-1 pb-1 pointer form-control" style="height: 30px;">-</span>' +
-             //      '</div>' +
-             //      '<input type="text" value="0" min="0" class="form-control d-inline-block text-center" style="height: 30px;width: 30px;" id="color_w_' + i + '">' +
-             //      '<div class="input-group-append">' +
-             //      '<span class="d-inline-block  pl-2 pr-2 pt-1 pb-1 pointer form-control" style="height: 30px;">+</span>' +
-             //      '</div>' +
-             //      '</div>' +
-             //      '</td>' +
-             //      '<td align="center">' +
-             //      '<span class="icon icon-minus d-inline-block pl-2 pr-2 pt-1 pb-1 pointer"></span>' +
-             //      '<input type="text" value="0" min="0" class="form-control d-inline-block text-center" style="height: 30px;width: 50px;" id="color_b_' + i + '">' +
-             //      '<span class="icon icon-plus d-inline-block  pl-2 pr-2 pt-1 pb-1 pointer"></span>' +
-             //      '</td>' +
-             //      '<td align="center">' +
-             //      '<span class="icon icon-minus d-inline-block pl-2 pr-2 pt-1 pb-1 pointer"></span>' +
-             //      '<input type="text" value="0" min="0" class="form-control d-inline-block text-center" style="height: 30px;width: 50px;" id="color_r_' + i + '">' +
-             //      '<span class="icon icon-plus d-inline-block  pl-2 pr-2 pt-1 pb-1 pointer"></span>' +
-             //      '</td>' +
-             //      '</tr>';
-             cm += 0.5;
+             tbody += '<tr>' +
+                 '<td>' + i + '</td>' +
+                 //  '<td>235.000<sup>đ</sup></td>' +
+                 '<td align="center">' +
+                 '<span class="d-inline-block pl-2 pr-2 pt-1 pb-1 pointer minus disabled">-</span>' +
+                 '<input type="text" value="0" min="0" class="form-control d-inline-block text-center" style="height: 30px;width: 50px;" id="size_' + i + '">' +
+                 '<span class="d-inline-block  pl-2 pr-2 pt-1 pb-1 pointer plus">+</span>' +
+                 '</td>' +
+                 '</tr>';
          }
-         $("#size_choose").html(tbody);
+         $("#size_choose tbody").html(tbody);
      }
-     choose_size();
+     size_choose();
 
      $('[data-toggle="popover"]').popover();
 
-     $("#white_color").click(function() {
-         if ($(this).hasClass("active")) {
-             $(this).removeClass("active");
-         } else {
-             $(this).addClass("active");
+
+     $(".minus").click(function() {
+         let qty = $(this).next().val();
+         if (qty && Number(qty) > 0) {
+             qty--;
+             $(this).next().val(qty);
          }
-         enable_size_choose();
      });
-     $("#black_color").click(function() {
-         if ($(this).hasClass("active")) {
-             $(this).removeClass("active");
-         } else {
-             $(this).addClass("active");
+     $(".plus").click(function() {
+         let qty = $(this).prev().val();
+         if (qty && Number(qty) >= 0) {
+             qty++;
+             $(this).prev().val(qty);
          }
-         enable_size_choose();
-     });
-     $("#red_color").click(function() {
-         if ($(this).hasClass("active")) {
-             $(this).removeClass("active");
-         } else {
-             $(this).addClass("active");
-         }
-         enable_size_choose();
      });
 
-     var enable_size_choose = function() {
-         if ($("#white_color").hasClass("active") || $("#black_color").hasClass("active") || $("#red_color").hasClass("active")) {
-             $("#size_choose").find("button").prop("disabled", "");
+     $("#white_color").click(function() {
+         inactive_color();
+         if ($(this).hasClass("active")) {
+             $(this).removeClass("active");
          } else {
-             $("#size_choose").find("button").prop("disabled", true);
+             $(this).addClass("active");
          }
+         //  enable_size_choose();
+     });
+     $("#black_color").click(function() {
+         inactive_color();
+         if ($(this).hasClass("active")) {
+             $(this).removeClass("active");
+         } else {
+             $(this).addClass("active");
+         }
+         //  enable_size_choose();
+     });
+     $("#red_color").click(function() {
+         inactive_color();
+         if ($(this).hasClass("active")) {
+             $(this).removeClass("active");
+         } else {
+             $(this).addClass("active");
+         }
+         //  enable_size_choose();
+     });
+
+     var inactive_color = function() {
+         $(".wrap-color-product").removeClass("active");
      }
+
+     //  var enable_size_choose = function() {
+     //      if ($("#white_color").hasClass("active") || $("#black_color").hasClass("active") || $("#red_color").hasClass("active")) {
+     //          $("#size_choose").find("button").prop("disabled", "");
+     //      } else {
+     //          $("#size_choose").find("button").prop("disabled", true);
+     //      }
+     //  }
 
  });
