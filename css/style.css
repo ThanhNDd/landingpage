@@ -1891,19 +1891,31 @@ h5,
 }
 
 .wrap-color-product:hover .color-product {
-    border: 2px solid white;
+    border: 2px solid #ff8b00;
 }
 
 .wrap-color-product:hover span {
-    color: white;
+    color: #ff8b00;
 }
 
 .wrap-color-product.active .color-product {
-    border: 2px solid white;
+    border: 2px solid #ff8b00;
 }
 
 .wrap-color-product.active span {
-    color: white;
+    color: #ff8b00;
+}
+
+button.choice {
+    border: 2px solid #ff8b00;
+}
+
+button:hover {
+    border: 2px solid #ff8b00;
+}
+
+button {
+    border: 2px solid #6c757d;
 }
 
 .pointer {

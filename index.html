@@ -696,35 +696,6 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="100">
-                    <form action="#" method="post">
-                        <div class="form-group row">
-                            <div class="col-md-6 mb-4 mb-lg-0">
-                                <input type="text" class="form-control" placeholder="Họ tên">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Số điện thoại">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" placeholder="Địa chỉ">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <textarea name="" id="" class="form-control" placeholder="Ghi chú cho shop." cols="10" rows="2"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-6 ml-auto">
-                                <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5" value="Đặt hàng">
-                            </div>
-                        </div>
-                    </form>
-                </div>
                 <div class="col-lg-6 ml-auto text-center" data-aos="fade-up" data-aos-delay="200">
                     <div class="wrap-color-product" id="white_color">
                         <div class="color-product" style="background-image: url('images/d/giay-vai-day-buoc-t-250x250.jpg');"></div>
@@ -738,8 +709,136 @@
                         <div class="color-product" style="background-image: url('images/d/giay-vai-day-buoc-do-250x250.jpg');"></div>
                         <span>Màu đỏ</span>
                     </div>
-                    <div class="col-md-12 text-left" id="size_choose">
+                    <div class="form-group row text-left" id="size_choose">
 
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <!-- <table class="table table-dark table-striped">
+                                <thead>
+                                    <tr>
+                                        <td>#</td>
+                                        <td>Sản Phẩm</td>
+                                        <td>Giá</td>
+                                        <td>SL</td>
+                                        <td>Tổng</td>
+                                        <td>*</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <div class="d-inline-block col-md-12 p-0">
+                                                <i style="font-size: 14px;font-weight: 100;">Màu sắc:</i><span> Trắng</span>
+                                            </div>
+                                            <div class="d-inline-block col-md-12 p-0">
+                                                <i style="font-size: 14px;font-weight: 100;">Size:</i><span> 29</span>
+                                            </div>
+                                            
+                                        </td>
+                                        <td>235.000<sup>đ</sup></td>
+                                        <td><input type="number" class="form-control qty" min="0" value="1" style="width: 60px;height: 30px;"></td>
+                                        <td>235.000<sup>đ</sup></td>
+                                        <td><a href="#">Xoá</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>
+                                            <div class="d-inline-block col-md-12 p-0">
+                                                <i style="font-size: 14px;font-weight: 100;">Màu sắc:</i><span> Đỏ</span>
+                                            </div>
+                                            <div class="d-inline-block col-md-12 p-0">
+                                                <i style="font-size: 14px;font-weight: 100;">Size:</i><span> 33</span>
+                                            </div>
+                                            
+                                        </td>
+                                        <td>235.000<sup>đ</sup></td>
+                                        <td><input type="number" class="form-control qty" min="0" value="1" style="width: 60px;height: 30px;"></td>
+                                        <td>235.000<sup>đ</sup></td>
+                                        <td><a href="#">Xoá</a></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3" class="text-right">Tổng</td>
+                                        <td class="text-left">2</td>
+                                        <td class="text-right">470.000<sup>đ</sup></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="text-right">Phí ship</td>
+                                        <td class="text-left"></td>
+                                        <td class="text-right">25.000<sup>đ</sup></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                            <td colspan="3" class="text-right">Tổng thanh toán</td>
+                                            <td class="text-left"></td>
+                                            <td class="text-right">495.000<sup>đ</sup></td>
+                                            <td></td>
+                                        </tr>
+                                </tfoot>
+                            </table> -->
+                            <table class="table table-dark table-striped">
+                                    <thead>
+                                        
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-left">Trắng</td>
+                                            <td colspan="3"  class="text-left">235.000<sup>đ</sup></td>
+                                            <td><a href="#">Xoá</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"  class="text-right">29</td>
+                                            <td><input type="number" class="form-control qty" min="0" value="1" style="width: 60px;height: 30px;"></td>
+                                            <td class="text-right">235.000<sup>đ</sup></td>
+                                            <td><a href="#">Xoá</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"  class="text-right">33</td>
+                                            <td><input type="number" class="form-control qty" min="0" value="1" style="width: 60px;height: 30px;"></td>
+                                            <td class="text-right">235.000<sup>đ</sup></td>
+                                            <td><a href="#">Xoá</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left">Đỏ</td>
+                                            <td colspan="3" class="text-left">235.000<sup>đ</sup></td>
+                                            <td><a href="#">Xoá</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"  class="text-right">31</td>
+                                            <td><input type="number" class="form-control qty" min="0" value="1" style="width: 60px;height: 30px;"></td>
+                                            <td class="text-right">235.000<sup>đ</sup></td>
+                                            <td><a href="#">Xoá</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"  class="text-right">36</td>
+                                            <td><input type="number" class="form-control qty" min="0" value="1" style="width: 60px;height: 30px;"></td>
+                                            <td class="text-right">235.000<sup>đ</sup></td>
+                                            <td><a href="#">Xoá</a></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td  colspan="2" class="text-right">Tổng</td>
+                                            <td class="text-left">2</td>
+                                            <td colspan="2" class="text-right">470.000<sup>đ</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="text-right">Phí ship</td>
+                                            <td class="text-left"></td>
+                                            <td colspan="2" class="text-right">25.000<sup>đ</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="text-right">Tổng thanh toán</td>
+                                            <td class="text-left"></td>
+                                            <td colspan="2" class="text-right">495.000<sup>đ</sup></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                        </div>
                     </div>
                     <!-- <table id="product_order">
                         <thead>
@@ -781,6 +880,37 @@
                     <!-- </tbody>
                     </table> -->
                 </div>
+                <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="100">
+                    <form action="#" method="post">
+                        <div class="form-group row">
+                            <div class="col-md-6 mb-4 mb-lg-0">
+                                <input type="text" class="form-control" placeholder="Họ tên">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Số điện thoại">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" placeholder="Địa chỉ">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <textarea name="" id="" class="form-control" placeholder="Ghi chú cho shop." cols="10" rows="2"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <div class="col-md-6 ml-auto">
+                                <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5" value="Đặt hàng">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
             </div>
         </div>
     </div>
