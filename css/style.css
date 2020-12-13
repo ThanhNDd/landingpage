@@ -1876,8 +1876,8 @@ h5,
 }
 
 .wrap-color-product {
-    display: inline-block;
-    width: 120px;
+    /* display: inline-block; */
+    /* width: 120px; */
     cursor: pointer;
 }
 
@@ -1885,7 +1885,7 @@ h5,
     background-position: center;
     width: 100px;
     height: 100px;
-    display: inline-block;
+    /* display: inline-block; */
     background-size: contain;
     border-radius: 50%;
 }
