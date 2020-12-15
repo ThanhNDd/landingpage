@@ -1926,3 +1926,11 @@ button {
 .btn:disabled {
     cursor: not-allowed;
 }
+
+.hidden {
+    display: none;
+}
+
+.choice {
+    background-color: #d2691e !important;
+}

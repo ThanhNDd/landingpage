@@ -14,33 +14,24 @@
      $('.slide-1').owlCarousel();
 
      var siteMenuClone = function() {
-
          $('.js-clone-nav').each(function() {
              var $this = $(this);
              $this.clone().attr('class', 'site-nav-wrap').appendTo('.site-mobile-menu-body');
          });
-
-
          setTimeout(function() {
-
              var counter = 0;
              $('.site-mobile-menu .has-children').each(function() {
                  var $this = $(this);
-
                  $this.prepend('<span class="arrow-collapse collapsed">');
-
                  $this.find('.arrow-collapse').attr({
                      'data-toggle': 'collapse',
                      'data-target': '#collapseItem' + counter,
                  });
-
                  $this.find('> ul').attr({
                      'class': 'collapse',
                      'id': 'collapseItem' + counter,
                  });
-
                  counter++;
-
              });
 
          }, 1000);
@@ -251,67 +242,203 @@
      }
      counter();
 
-     var size_choose = function() {
-         $("#size_choose tbody").html("");
+     var size_choose = function(el) {
+         $("#" + el + " tbody").html("");
          var tbody = "";
          var cm = 13.5;
          for (var i = 19; i < 37; i++) {
              tbody += '<tr>' +
-                 '<td>' + i + '</td>' +
-                 //  '<td>235.000<sup>đ</sup></td>' +
+                 '<td>' + i + ' (' + (cm + 'cm - ' + (cm + 0.5) + 'cm') + ')</td>' +
                  '<td align="center">' +
                  '<span class="d-inline-block pl-2 pr-2 pt-1 pb-1 pointer minus disabled">-</span>' +
                  '<input type="text" value="0" min="0" class="form-control d-inline-block text-center" style="height: 30px;width: 50px;" id="size_' + i + '">' +
                  '<span class="d-inline-block  pl-2 pr-2 pt-1 pb-1 pointer plus">+</span>' +
                  '</td>' +
                  '</tr>';
+             cm += 0.5;
          }
-         $("#size_choose tbody").html(tbody);
+         $("#" + el + " tbody").html(tbody);
      }
-     size_choose();
+     size_choose("white");
+     size_choose("black");
+     size_choose("red");
 
      $('[data-toggle="popover"]').popover();
 
-
      $(".minus").click(function() {
          let qty = $(this).next().val();
+
          if (qty && Number(qty) > 0) {
              qty--;
              $(this).next().val(qty);
+             $(this).closest("tr").addClass("choice");
+             if (qty == 0) {
+                 $(this).closest("tr").removeClass("choice");
+             }
+
+             let color = $(this).closest("table").attr("id");
+             console.log(color);
+             if (color === "white") {
+                 let white_qty = 0;
+                 $("#white tbody tr").each(function() {
+                     white_qty += Number($(this).find("input").val());
+                 });
+                 setTimeout(() => {
+                     $("#white_qty").text(white_qty);
+                     console.log(white_qty);
+                     if (white_qty > 0) {
+                         $("#white_section").removeClass("hidden");
+                         let white_amount = white_qty * PRICE;
+                         $("#white_amount").text(formatNumber(white_amount));
+                     } else {
+                         $("#white_section").addClass("hidden");
+                         $("#white_amount").text(0);
+                     }
+                 }, 100);
+
+             } else if (color === "black") {
+                 let black_qty = 0;
+                 $("#black tbody tr").each(function() {
+                     black_qty -= Number($(this).find("input").val());
+                 });
+                 $("#black_qty").text(black_qty);
+                 if (black_qty > 0) {
+                     $("#black_section").removeClass("hidden");
+                     let black_amount = black_qty * PRICE;
+                     $("#black_amount").text(formatNumber(black_amount));
+                 } else {
+                     $("#black_section").addClass("hidden");
+                     $("#black_amount").text(0);
+                 }
+             } else if (color === "red") {
+                 let red_qty = 0;
+                 $("#red tbody tr").each(function() {
+                     red_qty -= Number($(this).find("input").val());
+                 });
+                 $("#red_qty").text(red_qty);
+                 if (red_qty > 0) {
+                     $("#red_section").removeClass("hidden");
+                     let red_amount = red_qty * PRICE;
+                     $("#red_amount").text(formatNumber(red_amount));
+                 } else {
+                     $("#red_section").addClass("hidden");
+                     $("#red_amount").text(0);
+                 }
+             }
          }
+         calculate_total();
      });
      $(".plus").click(function() {
          let qty = $(this).prev().val();
          if (qty && Number(qty) >= 0) {
              qty++;
              $(this).prev().val(qty);
+             $(this).closest("tr").addClass("choice");
+             if (qty == 0) {
+                 $(this).closest("tr").remove("choice");
+             }
+
+             let color = $(this).closest("table").attr("id");
+             console.log(color);
+             if (color === "white") {
+                 let white_qty = 0;
+                 $("#white tbody tr").each(function() {
+                     white_qty += Number($(this).find("input").val());
+                 });
+                 $("#white_qty").text(white_qty);
+                 if (white_qty > 0) {
+                     $("#white_section").removeClass("hidden");
+                     let white_amount = white_qty * PRICE;
+                     $("#white_amount").text(formatNumber(white_amount));
+                 } else {
+                     $("#white_section").addClass("hidden");
+                     $("#white_amount").text(0);
+                 }
+             } else if (color === "black") {
+                 let black_qty = 0;
+                 $("#black tbody tr").each(function() {
+                     black_qty += Number($(this).find("input").val());
+                 });
+                 $("#black_qty").text(black_qty);
+                 if (black_qty > 0) {
+                     $("#black_section").removeClass("hidden");
+                     let black_amount = black_qty * PRICE;
+                     $("#black_amount").text(formatNumber(black_amount));
+                 } else {
+                     $("#black_section").addClass("hidden");
+                     $("#black_amount").text(0);
+                 }
+             } else if (color === "red") {
+                 let red_qty = 0;
+                 $("#red tbody tr").each(function() {
+                     red_qty += Number($(this).find("input").val());
+                 });
+                 $("#red_qty").text(red_qty);
+                 if (red_qty > 0) {
+                     $("#red_section").removeClass("hidden");
+                     let red_amount = red_qty * PRICE;
+                     $("#red_amount").text(formatNumber(red_amount));
+                 } else {
+                     $("#red_section").addClass("hidden");
+                     $("#red_amount").text(0);
+                 }
+             }
+             calculate_total();
          }
      });
 
+     var calculate_total = function() {
+         let white_qty = Number($("#white_qty").text());
+         let black_qty = Number($("#black_qty").text());
+         let red_qty = Number($("#red_qty").text());
+         let white_amount = Number(replaceComma($("#white_amount").text()));
+         let black_amount = Number(replaceComma($("#black_amount").text()));
+         let red_amount = Number(replaceComma($("#red_amount").text()));
+         let total_qty = white_qty + black_qty + red_qty;
+         let total_amount = white_amount + black_amount + red_amount;
+
+         $("#total_qty").text(total_qty);
+         $("#total_amount").text(formatNumber(total_amount));
+
+         let shipping_fee = Number(replaceComma($("#shipping_fee").text()));
+
+         let total_checkout = total_amount + shipping_fee;
+         $("#total_checkout").text(formatNumber(total_checkout));
+     }
+
      $("#white_color").click(function() {
          inactive_color();
+         hide_table_size();
          if ($(this).hasClass("active")) {
              $(this).removeClass("active");
+             $("#white").addClass("hidden");
          } else {
              $(this).addClass("active");
+             $("#white").removeClass("hidden");
          }
          //  enable_size_choose();
      });
      $("#black_color").click(function() {
          inactive_color();
+         hide_table_size();
          if ($(this).hasClass("active")) {
+             $("#black").addClass("hidden");
              $(this).removeClass("active");
          } else {
              $(this).addClass("active");
+             $("#black").removeClass("hidden");
          }
          //  enable_size_choose();
      });
      $("#red_color").click(function() {
          inactive_color();
+         hide_table_size();
          if ($(this).hasClass("active")) {
+             $("#red").addClass("hidden");
              $(this).removeClass("active");
          } else {
              $(this).addClass("active");
+             $("#red").removeClass("hidden");
          }
          //  enable_size_choose();
      });
@@ -320,12 +447,32 @@
          $(".wrap-color-product").removeClass("active");
      }
 
-     //  var enable_size_choose = function() {
-     //      if ($("#white_color").hasClass("active") || $("#black_color").hasClass("active") || $("#red_color").hasClass("active")) {
-     //          $("#size_choose").find("button").prop("disabled", "");
-     //      } else {
-     //          $("#size_choose").find("button").prop("disabled", true);
-     //      }
-     //  }
+     var hide_table_size = function() {
+         $("#white").addClass("hidden");
+         $("#black").addClass("hidden");
+         $("#red").addClass("hidden");
+     };
 
+     $("#white_color").click();
+
+
+     var formatNumber = function(num) {
+         if (num) {
+             return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+         }
+         return num;
+     }
+
+     var replaceComma = function(value) {
+         if (value) {
+             value = value.replace(/,/g, '');
+             if (value.indexOf("đ") > -1) {
+                 value = value.replace(" đ", "");
+             }
+             value = value.replace(/ /g, '');
+         }
+         return value;
+     }
+
+     const PRICE = 235000;
  });
